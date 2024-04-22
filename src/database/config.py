@@ -3,7 +3,7 @@ from collections import namedtuple
 
 # postgres config host and port
 postgres_host='localhost'
-postgres_port=5430
+postgres_port=5555
 
 
 # Struct for Databaases

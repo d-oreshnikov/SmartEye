@@ -14,13 +14,17 @@ def main():
 
     st.write(home_introduction)
 
-    col1, col2 = st.columns(2)
+    col1, col2, col3 = st.columns(3)
     with col1: 
         if st.button("Upload photo"):
             switch_page('photo')
     with col2: 
         if st.button("Stream"):
             switch_page('stream')
+    with col3: 
+        if st.button("Delete photo"):
+            switch_page('del_photo')
+    
 
 if __name__ == '__main__':
     main()

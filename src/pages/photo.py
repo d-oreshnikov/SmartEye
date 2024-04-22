@@ -25,13 +25,6 @@ if uploaded_file is not None:
     save_button = st.button("Сохранить фотографию")
 
     if save_button:
-        # filename = uploaded_file.name
-        # upload_dir = "uploads"
-        # if not os.path.exists(upload_dir):
-        #     os.makedirs(upload_dir)
-        # image.save(os.path.join(upload_dir, filename))
-        # st.success(f"Фотография '{filename}' успешно сохранена.")
-
         image_np = np.array(image)
         image_bytes = io.BytesIO()
         image.save(image_bytes, format=image.format)

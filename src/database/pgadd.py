@@ -128,7 +128,7 @@ def get_dict_from_database(table_name, key_column, value_column):
 
 def get_card_info(table_name, hash_value):
 
-    # Устанавливаем соединение с базой данных
+
     conn = psycopg2.connect(
     host=postgres_host,
     port=postgres_port,
@@ -136,21 +136,41 @@ def get_card_info(table_name, hash_value):
     user="postgres",
     password="school21")
 
-    # Создаем курсор
     cursor = conn.cursor()
 
-    # Выполняем запрос для выборки данных из таблицы
-    cursor.execute(f"SELECT last_name, first_name, middle_name FROM {table_name} where photo_id = '{hash_value}'")
 
-    # Получаем результаты запроса
+    cursor.execute(f"SELECT last_name, first_name, middle_name FROM {table_name} where photo_id = '{hash_value}'")
     results = cursor.fetchall()
 
-    # Закрываем курсор и соединение
+    cursor.close()
+    conn.close()
+    return results
+
+
+def del_from_pg_by_id(table_name, id):
+
+
+    conn = psycopg2.connect(
+    host=postgres_host,
+    port=postgres_port,
+    database="postgres",
+    user="postgres",
+    password="school21")
+
+    cursor = conn.cursor()
+
+    cursor.execute(f"SELECT  photo_id FROM {table_name} where id = %s", (id))
+    results = cursor.fetchone()[0]
+
+    logger.info(results)
+
+    cursor.execute(f"DELETE FROM photos WHERE card_id = %s", (results,))
+    cursor.execute(f"DELETE FROM {table_name} WHERE id = %s", (id,))
+
+    conn.commit()
+
     cursor.close()
     conn.close()
 
-    # Создаем словарь
-    # Заполняем словарь данными из результатов запроса
+    return True
 
-    # Возвращаем словарь
-    return results
