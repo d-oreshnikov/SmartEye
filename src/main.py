@@ -6,24 +6,22 @@ from database import pgconfig
 
 
 def main():
-    home_title = "Neuroface"
-    home_introduction = "Welcome to Neuroface!"
 
+    st.image('theme/logo.png')
 
-    st.title(home_title)
-
-    st.write(home_introduction)
-
-    col1, col2, col3 = st.columns(3)
+    col1, col2, col3, col4 = st.columns(4)
     with col1: 
         if st.button("Upload photo"):
-            switch_page('photo')
+            switch_page('upload_photo')
     with col2: 
-        if st.button("Stream"):
-            switch_page('stream')
+        if st.button("Stream camera"):
+            switch_page('stream_camera')
     with col3: 
+        if st.button("Stream video"):
+            switch_page('stream_video')
+    with col4: 
         if st.button("Delete photo"):
-            switch_page('del_photo')
+            switch_page('delete_photo')
     
 
 if __name__ == '__main__':

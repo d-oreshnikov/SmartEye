@@ -174,3 +174,23 @@ def del_from_pg_by_id(table_name, id):
 
     return True
 
+
+def get_photo(id):
+
+
+    conn = psycopg2.connect(
+    host=postgres_host,
+    port=postgres_port,
+    database="postgres",
+    user="postgres",
+    password="school21")
+
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT photo FROM photos WHERE card_id = %s", (id,))
+    photo_data = cursor.fetchone()[0]
+
+    conn.commit()
+    cursor.close()
+    conn.close()
+    return photo_data
