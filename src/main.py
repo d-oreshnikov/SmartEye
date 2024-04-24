@@ -4,12 +4,17 @@ from database import pgconfig
 
 
 
+st.set_page_config(
+     page_title="Smart Eye",
+     initial_sidebar_state="expanded",
+     layout="centered"
 
+ )
 def main():
 
     st.image('theme/logo.png')
 
-    col1, col2, col3, col4 = st.columns(4)
+    col1, col2, col3, col4 = st.columns([1,1,1,1])
     with col1: 
         if st.button("Upload photo"):
             switch_page('upload_photo')

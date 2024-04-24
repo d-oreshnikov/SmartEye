@@ -8,25 +8,6 @@ df = pd.read_sql(
 )
 
 df.head()
-# Определение параметров темы
-primary_color = "#FF4B4B"
-background_color = "#F5A700"
-secondary_background_color = "#D48B09"
-text_color = "#1C1C1C"
-font = "Serif"
-
-# Применение цветов к элементам интерфейса
-st.markdown(
-    f"""
-    <style>
-    .stApp {{
-        background-color: {background_color};
-    }}
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-
 # Отображение таблицы с пользователями
 st.write("Таблица с пользователями:")
 st.write(df)
@@ -44,4 +25,4 @@ with col2:
 
 if del_button:
     if del_from_pg_by_id("cards_meta",id):
-        st.success(f"Фотография '{id}' успешно сохранена.")
+        st.success(f"Фотография '{id}' успешно удалена.")

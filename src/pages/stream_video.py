@@ -32,7 +32,7 @@ faceModel = "opencv_face_detector_uint8.pb"
 faceNet = cv2.dnn.readNet(faceModel, faceProto)
 st.title("Camera input")
 tfile = tempfile.NamedTemporaryFile(delete=False)
-video = cv2.VideoCapture("photo/metro_short.mp4")
+video = cv2.VideoCapture("photo/margo.mp4")
 frameST = st.empty()
 last_execution_time = time.time()
 

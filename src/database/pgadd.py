@@ -159,13 +159,13 @@ def del_from_pg_by_id(table_name, id):
 
     cursor = conn.cursor()
 
-    cursor.execute(f"SELECT  photo_id FROM {table_name} where id = %s", (id))
+    cursor.execute(f"SELECT photo_id FROM {table_name} where id = {id}")
     results = cursor.fetchone()[0]
 
     logger.info(results)
 
-    cursor.execute(f"DELETE FROM photos WHERE card_id = %s", (results,))
-    cursor.execute(f"DELETE FROM {table_name} WHERE id = %s", (id,))
+    cursor.execute(f"DELETE FROM photos WHERE card_id = '{results}'")
+    cursor.execute(f"DELETE FROM {table_name} WHERE id = {id}")
 
     conn.commit()
 
