@@ -1,3 +1,4 @@
-# NeuroFace-
+# SmartEye
 Face Recognition app
-![image](../NeuroFace/theme/logo.png)
+
+![alt text](theme/logo.png)
