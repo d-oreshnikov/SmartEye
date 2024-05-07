@@ -6,7 +6,6 @@ from utils.encoder import face_encoder, verify
 from database.pgadd import get_card_info, get_photo
 import time
 
-models = ["VGG-Face", "Facenet", "OpenFace", "DeepFace", "DeepID", "Dlib", "ArcFace"]
 
 def highlightFace(net, frame, conf_threshold=0.7):
     frameOpencvDnn = frame.copy()
@@ -27,12 +26,12 @@ def highlightFace(net, frame, conf_threshold=0.7):
             cv2.rectangle(frameOpencvDnn, (x1, y1), (x2, y2), (0, 255, 0), int(round(frameHeight/150)), 8)
     return frameOpencvDnn, faceBoxes
 
-faceProto = "opencv_face_detector.pbtxt"
-faceModel = "opencv_face_detector_uint8.pb"
+faceProto = "../models/opencv_face_detector.pbtxt"
+faceModel = "../models/opencv_face_detector_uint8.pb"
 faceNet = cv2.dnn.readNet(faceModel, faceProto)
 st.title("Camera input")
 tfile = tempfile.NamedTemporaryFile(delete=False)
-video = cv2.VideoCapture("photo/margo.mp4")
+video = cv2.VideoCapture("../photo/margo.mp4")
 frameST = st.empty()
 last_execution_time = time.time()
 

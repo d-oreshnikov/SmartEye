@@ -6,7 +6,6 @@ from utils.encoder import face_encoder, verify
 from database.pgadd import get_card_info, get_photo
 import time
 
-models = ["VGG-Face", "Facenet", "OpenFace", "DeepFace", "DeepID", "Dlib", "ArcFace"]
 
 def highlightFace(net, frame, conf_threshold=0.7):
     frameOpencvDnn = frame.copy()
