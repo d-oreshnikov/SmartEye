@@ -1,0 +1,102 @@
+[tool.poetry]
+name = "src"
+version = "0.1.0"
+description = ""
+authors = ["cupcakep <cupcakep@student.21-school.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "~3.11"
+
+
+pandas = "*"
+numpy = "*"
+loguru = "*"
+python-dotenv = "*"
+psycopg2-binary = "*"
+sqlalchemy = "*"
+alembic = "*"
+pydantic = "*"
+
+
+
+[tool.poetry.group.dev.dependencies]
+mypy = "*"
+black = "*"
+ruff = "*"
+jupyter = "*"
+sqlalchemy2-stubs = "*"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.mypy]
+allow_redefinition = true
+disallow_incomplete_defs = true
+files = "."
+ignore_missing_imports = true
+python_version = "3.11"
+strict_optional = true
+warn_return_any = false
+warn_unused_configs = true
+
+[tool.black]
+exclude = '''
+(
+  /(
+    | \.git
+    | \.mypy_cache
+    | \.venv
+  )/
+)
+'''
+include = '\.pyi?$'
+skip-string-normalization = true
+line-length = 120
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+exclude = [".venv"]
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+  "D105",
+  "D107",
+  "D203",
+  "D205",
+  "D213",
+  "D401",
+  "D406",
+  "D407",
+  "D413",
+  "FBT",
+  "FIX002",
+  "FIX004",
+  "G004",
+  "PD002",
+  "PD008",
+  "PD011",
+  "PD901",
+  "RUF001",
+  "RUF002",
+  "RUF003",
+  "TRY003",
+]
+
+[tool.ruff.lint.pep8-naming]
+ignore-names = ["X*", "df"]
+
+[tool.ruff.lint.isort]
+lines-after-imports = 2
+no-lines-before = ["standard-library", "local-folder"]
+section-order = [
+  "future",
+  "standard-library",
+  "third-party",
+  "first-party",
+  "local-folder",
+]
